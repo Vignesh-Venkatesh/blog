@@ -24,13 +24,13 @@ const { title, description = "Terminal-style dev blog" } = Astro.props;
   </head>
   <body class="bg-[var(--color-base-100)] text-[var(--color-base-content)] font-mono">
     <div class="min-h-screen flex flex-col">
-      <header>
+      <header class="pt-6">
         <div class="max-w-4xl mx-auto px-6 py-6">
           <nav class="flex justify-between items-center">
-            <a href="/" class="text-xl font-black text-[var(--color-success)] hover:text-[var(--color-success)] transition-colors">
+            <a href="/" class="text-2xl font-black text-[var(--color-success)] hover:text-[var(--color-success)] transition-colors">
               blog.vigiii
             </a>
-            <div class="flex gap-8 items-center font-black">
+            <div class="flex gap-8 items-center font-semibold">
               <a href="/" class="text-[var(--color-base-content)] hover:text-[var(--color-success)] transition-colors">blog</a>
               <a href="https://vigneshvenkatesh.com" class="text-[var(--color-base-content)] hover:text-[var(--color-success)] transition-colors">portfolio</a>
             </div>

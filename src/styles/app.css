@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap");
 @import "tailwindcss";
 
 @theme {
   --font-mono:
-    "JetBrains Mono", "Fira Code", "Consolas", "Monaco", "Courier New",
-    monospace;
+    "Google Sans Code", "JetBrains Mono", "Fira Code", "Consolas", "Monaco",
+    "Courier New", monospace;
 
   /* Abyss theme colors */
   --color-base-100: oklch(20% 0.08 209);
@@ -26,6 +27,7 @@
   --color-warning-content: oklch(44.8% 0.1962 84.62);
   --color-error: oklch(65% 0.1985 24.22);
   --color-error-content: oklch(27% 0.1985 24.22);
+  --color-links: oklch(79.91% 0.141 60.1);
 }
 
 @layer base {
