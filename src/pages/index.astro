@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const allPosts = await Astro.glob('../content/blog/*.mdx');
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+---
+
+<BaseLayout title="Blog - Vignesh Venkatesh">
+
+  <div class="space-y-8">
+    {sortedPosts.map((post) => {
+      const formattedDate = new Date(post.frontmatter.pubDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      const slug = post.file.split('/').pop()?.replace('.mdx', '');
+
+      return (
+        <article class="border-l-4 border-[var(--color-success)] pl-6 py-2 hover:border-[var(--color-base-content)] transition-colors group">
+          <a href={`/blog/${slug}`} class="block">
+            <div class="flex flex-col gap-2">
+              <h2 class="text-xl font-bold text-[var(--color-base-content)] group-hover:text-[var(--color-success)] transition-colors">
+                {post.frontmatter.title}
+              </h2>
+              <time class="text-xs text-[var(--color-muted)]" datetime={post.frontmatter.pubDate}>
+                {formattedDate}
+              </time>
+              <p class="text-[var(--color-base-content)]/80 leading-relaxed text-sm">
+                {post.frontmatter.description}
+              </p>
+              {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                <div class="flex gap-3 mt-2">
+                  {post.frontmatter.tags.map((tag: string) => (
+                    <span class="text-xs text-[var(--color-success)] bg-gray-800 px-2 py-1 rounded font-bold opacity-80">#{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </a>
+        </article>
+      );
+    })}
+  </div>
+
+  {sortedPosts.length === 0 && (
+    <div class="border-l-4 border-[var(--color-primary)] pl-6 py-8">
+      <p class="text-[var(--color-muted)]">no posts yet. stay tuned!</p>
+    </div>
+  )}
+</BaseLayout>

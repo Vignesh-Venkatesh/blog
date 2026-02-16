@@ -1,0 +1,57 @@
+---
+import '../styles/app.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Terminal-style dev blog" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>{title}</title>
+  </head>
+  <body class="bg-[var(--color-base-100)] text-[var(--color-base-content)] font-mono">
+    <div class="min-h-screen flex flex-col">
+      <header>
+        <div class="max-w-4xl mx-auto px-6 py-6">
+          <nav class="flex justify-between items-center">
+            <a href="/" class="text-xl font-black text-[var(--color-success)] hover:text-[var(--color-success)] transition-colors">
+              blog.vigiii
+            </a>
+            <div class="flex gap-8 items-center font-black">
+              <a href="/" class="text-[var(--color-base-content)] hover:text-[var(--color-success)] transition-colors">blog</a>
+              <a href="https://vigneshvenkatesh.com" class="text-[var(--color-base-content)] hover:text-[var(--color-success)] transition-colors">portfolio</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <div class="max-w-4xl mx-auto px-6 py-12">
+          <slot />
+        </div>
+      </main>
+
+      <footer>
+        <div class="max-w-4xl mx-auto px-6 py-8">
+          <div class="flex gap-6 justify-center items-center text-sm text-[var(--color-muted)]">
+              <a href="https://github.com/Vignesh-Venkatesh" class="hover:text-[var(--color-success)] transition-colors" target="_blank" rel="noopener noreferrer">github</a>
+              <a href="https://linkedin.com/in/vignesh-2k3" class="hover:text-[var(--color-success)] transition-colors" target="_blank" rel="noopener noreferrer">linkedin</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
